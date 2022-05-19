@@ -1,0 +1,5 @@
+[alias]
+	mr = push -u origin HEAD
+	cm = !git add -A && git commit
+	last = !git log -1 --pretty=%B
+	 
