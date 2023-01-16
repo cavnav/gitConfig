@@ -3,3 +3,33 @@
 	cm = !git add -A && git commit
 	last = !git log -1 --pretty=%B
 	 
+#[core]
+#	editor = open -e -n -W
+[alias]
+	bl = !git branch --sort=-committerdate
+	curb = !git branch --show-current
+	pt = curb  "!f() { \
+          git pull origin/$1; \
+        }; f"
+	cm = !git add -A && git commit	
+	cmn = cm --no-verify
+	last = !git log -1 --pretty=format:%s%n
+	lastt = !git last >> ~/.bash_history
+	nt = "!f() { \
+          git checkout -b MOL-$1; \
+        }; f"
+	cht = "!f() { \
+          git checkout MOL-$1 $2 $3; \
+        }; f" 
+        nb = "!f() { \
+          git checkout -b $1; \
+        }; f"
+	chp = !git checkout --
+	cman = cm --amend --no-verify
+	cmann = cman --no-edit
+	cmu = cm -m"update"
+	cmumr = cmu && $(git mr)
+	mr = !git push -u origin HEAD && date
+	mrf = mr --force
+	dd = !git push origin --delete $(git curb)
+	ddmr = !git dd && git mr
